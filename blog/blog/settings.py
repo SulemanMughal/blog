@@ -141,7 +141,7 @@ EMAIL_HOST_USER = 'futuresoftcode@gmail.com'
 EMAIL_HOST_PASSWORD = 'Sul03314307703'
 
 AUTHENTICATION_BACKENDS=[
-     'blogs.backends.smtp.EmailBackend',
+     'blogs.backends.console.EmailBackend',
      'django.contrib.auth.backends.ModelBackend',
     
  ]
