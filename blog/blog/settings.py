@@ -25,7 +25,7 @@ SECRET_KEY = '61&+8q-^2z_1silwm$4$z(4@q=yp7y!4r(*p!$3h5kh0op4_va'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['165.22.80.249']
 
 
 # Application definition
@@ -133,17 +133,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR),'media')
 
 ############
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'futuresoftcode@gmail.com'
 EMAIL_HOST_PASSWORD = 'Sul03314307703'
 
-
-# AUTHENTICATION_BACKENDS=[
-#     'blogs.backends.console.EmailBackend',
-#     'django.contrib.auth.backends.ModelBackend',
+AUTHENTICATION_BACKENDS=[
+     'blogs.backends.smtp.EmailBackend',
+     'django.contrib.auth.backends.ModelBackend',
     
-# ]
+ ]
 
