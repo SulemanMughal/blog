@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for i in authors %}
+<a href="{% url 'blog-by-author' i.id %}">{{i.author}}</a><br>
+
+{% endfor %}
+
+{% endblock %}

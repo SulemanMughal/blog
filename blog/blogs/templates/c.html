@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BLOG</title>
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        .navbar{
+        margin-bottom:0;
+        border-radius:0;
+        border:white;
+        background-color:white; 
+                
+      }
+      .nav{
+          color: red;
+          font-size:30px;
+          font-family:  sans-serif;
+          
+      }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div id="category">
+                <div class="container">
+                  <ul class="nav navbar-nav">
+                     
+                    <li><a href="/category/python"><h1 class="nav">Python</h1></a></li>
+                    <li><a href="/category/linux/"><h1 class="nav"> Linux</h1></a></li>
+                    <li><a href="/category/video-animation"><h1 class="nav"> Windows</h1></a></li>
+                    <li><a href="/category/music-audio"><h1 class="nav"> About Us</h1></a></li>
+                    <li><a href="/category/programming-tech"><h1 class="nav"> Contact</h1></a></li>
+                  </ul>
+                </div>
+              </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+{% block content %}
+
+{% endblock %}
+
+
+    <hr>
+    <footer class="text-center">
+        <h4><mark>2019@sardardawar</mark></h4>
+    </footer>
+</body>

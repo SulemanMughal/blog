@@ -1,0 +1,15 @@
+
+<button style="background-color:#55ACEE;border:white" class="btn btn-social-icon btn-twitter" > <i style="color:white" class="fa fa-twitter"></i> {% post_to_twitter " {{blogs.title}}{{blogs.author.author}}. Check it out!" object_or_url "Twitter" %}</button>
+                <br><br>
+<a class="btn btn-social-icon btn-facebook" > <span class="fa fa-facebook"></span>     
+{% post_to_facebook object_or_url  "Facebook" %}</a><br><br>
+   
+<a class="btn btn-social-icon btn-linkedin" > <span class="fa fa-linkedin"></span> 
+                        {% post_to_linkedin blogs.title object_or_url "LinkedIn" %}</a><br><br>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+<a class="btn btn-social-icon btn-google" > <span class="fa fa-google"></span>
+                        {% send_email object.title "{{blogs.title}}. Check it out!" object_or_url "Gmail" %}</a>
+<a class="btn btn-social-icon btn-instagram" > <span class="fa fa-instagram"></span> 
+                            {% send_email object.title "{{blogs.title}}. Check it out!" object_or_url "Instagram" %}</a>
+                    

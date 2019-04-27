@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for  blogs in blogs %}  
+
+<a  href="{% url 'detail' blogs.slug %}"  style="color:black"><strong >{{blogs.title}}</strong></a><br> 
+By <a href="{% url 'blog-by-author' blogs.author.id %}">{{blogs.author.author}}</a>   <br><br><br>
+ <a href="{% url 'detail' blogs.slug %}"><img src="/media/{{blogs.image}}" style="height:500px;width:500px"><br> </a>
+ <br><br><br>
+<p>{{blogs.description}}</p>
+
+<hr>
+{% endfor %}
+{% endblock %}

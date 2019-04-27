@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load social_share %}
+{% load embed_video_tags %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<div class=" container">
+    <div class="row">
+        <div class="col-md-8 col-xs-8 col-sm-8">
+
+            <h3 style="font-style:italic">{{blogs.title}}</h3>
+            by <a href="{% url 'blog-by-author' blogs.author.id %}">{{blogs.author.author}}</a><br>
+            <img src="/media/{{blogs.image}}" style="height:500px; width: 500px;">
+            {% video blogs.video '500x500' %}
+
+            <p>{{blogs.description}}
+            </p>
+
+            <i>Published at: {{blogs.created_at}}</i>
+            <br> <br> <br>
+            <div class="jumbotron">
+            <table>
+                <tr>
+                    <th>Comments</th>
+                   
+
+                </tr>
+            </table>
+        </div>
+            <div class="jumbotron">
+                <div class="container">
+
+                       
+                      
+                        <form method="POST"  action = "{% url 'detail' blogs.slug %}">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                  <label>Name</label>
+                                  <input name="name" type="text"  class="form-control" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input name="email" type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                        <label>Comment</label>
+                                        <input name="description" type="text" class="form-control" placeholder="Write your Comment">
+                                      </div>
+                                  
+                                <button type="submit" class="btn btn-default">Post</button>
+                              </form></div></div>
+                              <div class="jumbotron">
+                                    <div class="container">    
+                    {% for i in comments %}
+                    
+                    <h3>{{i.name}} <i style="font-size:10px">says</i> </h3>
+                    {{i.description}} <br><br>
+                    <!-- {% for j in i.comment %}
+                    
+                       
+                            <h6>{{ j.description }} </h6>
+                        
+                   
+                   {% endfor %} -->
+
+                   {% for j in replies %}
+                   {% if j.comment.id == i.id %}
+                   <div class="container" style="left:5%;">
+                    <h3>{{j.name}} <i style="font-size:10px">replied</i> </h3>
+                   </div>
+                   <div class="container" style="left:5%;">
+                    {{ j.description }}<br><br>
+                   </div>
+                    
+                   {% endif %}
+                   
+                   {% endfor %}
+                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#" data-toggle="modal" data-target="#exampleModal">Reply</a>
+                  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Reply</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'reply' i.id blogs.slug  %}" method="POST">
+            {% csrf_token %}
+            <!-- {{ form_1.as_p }} -->
+            <div class="form-group">
+                <input type="text" name="name" maxlength="100" required id="id_name" placeholder="Name"
+                  class="form-control">
+              </div>
+
+              <div class="form-group">
+                <input type="text" name="email" maxlength="100" required id="id_email" placeholder="Email"
+                  class="form-control">
+              </div>
+
+              <div class="form-group">
+                <textarea name="description" cols="40" rows="10" maxlength="1000" required id="id_description" class="form-control z-depth-1"
+                  placeholder="Write something here..." style="resize:none;"></textarea>
+              </div>
+              
+              <div class="form-group">
+              <!-- <button type="submit" class="btn btn-lg btn-primary">Submit</button> -->
+              <button type="submit" class="btn btn-primary" style="float:none;">Submit</button>
+            </div>
+        </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+<!-- Button trigger modal -->
+
+
+
+
+        </div>
+        <div class="col-md-4 col-xs-4 col-sm-4">
+            <div class="panel panel-default" style="margin-right:50px">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Share it to your Friends</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            {% post_to_twitter " {{blogs.title}}{{blogs.author.author}}. Check it out!" object_or_url "Twitter" %}
+
+
+                            {% post_to_facebook object_or_url "Facebook" %}
+
+
+                            
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+
+                            {% send_email object.title "{{blogs.title}}. Check it out!" object_or_url "Gmail" %}
+                            {% post_to_linkedin blogs.title object_or_url "LinkedIn" %}
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <br><br>
+            <div class="panel panel-default" style="margin-right:50px">
+                <div class="panel-heading">
+                    <div class=" panel-title">Popular Blogs</div>
+                </div>
+                <div class="panel-body">
+
+                    {% for list in list  %}
+                        {% if forloop.counter <= 6 %}
+                    <img src="/media/{{list.image}}" style="height:50px;width:50px">
+                    <a href="{% url 'detail' list.slug %}">{{list.title}}</a><br>
+                   {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="panel panel-default" style="margin-right:50px">
+                <div class="panel-heading">
+                    <div class=" panel-title">Subscribe Our Blog</div>
+                </div>
+                <div class="panel-body">
+                    <p>Keep in touch, stay tuned with our more blogs. you can subscribe it here</p>
+                    <a href="{% url 'subscribe' %}" style="color:black">
+                        <h4 style="border:black;border-radius:10px;border-style: solid;border-width: 1px;text-align: center">
+                            Subscribe </h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,141 @@
+{%  load static %}
+
+<!DOCTYPE html>
+
+<!--[if lt IE 9]>
+<html id="ie" lang="en-US" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BLOG</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+     
+    <!-- all other scripts are enqueued via functions.php -->
+    <!--[if lt IE 9]>
+        <script src="https://cupofjo.com/wp-content/themes/cupofjo/assets/vendor/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <script src="https://cupofjo.com/wp-content/themes/cupofjo/assets/test.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+
+
+
+</style>
+
+    
+
+
+
+<link rel='stylesheet' id='cup-of-jo-style-css'  href='https://cupofjo.com/wp-content/themes/cupofjo/style.css?ver=20181117' type='text/css' media='all' />
+<script type='text/javascript' src='https://cupofjo.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://cupofjo.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://cupofjo.com/wp-content/themes/cupofjo/assets/vendor/jquery.fitvids.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://cupofjo.com/wp-content/themes/cupofjo/assets/vendor/jquery.bxslider.min.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://cupofjo.com/wp-content/themes/cupofjo/assets/vendor/validation.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://cupofjo.com/wp-content/themes/cupofjo/assets/vendor/isotope.pkgd.min.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://cupofjo.com/wp-content/themes/cupofjo/assets/theme.js?ver=20190116a'></script>
+
+
+	
+<body
+style='background-color: white;'   >
+
+	<div id="page">
+		<header id="site-header" role="banner">
+		    <div class="row"><div class="col-md-4">
+            <image src="{% static  'img/logo.jpg'  %}" style="width: 200px;height:200px">
+            </div><div class="col-md-4" style="margin-top:50px">
+              <h1 style="text-align:center;font-size:40px;"><span style=" border-bottom-style:solid;border-bottom-color:rosybrown;border-bottom-width: 3px; ;"><span style="color:red" >it</span><span >superstar</span></span><span style="color:slateblue">.</span><span style="color:red">com</span></h1>
+              <h1 style="text-align:center" >Learning Starts Here</h1>
+            </div></div>
+
+			<nav id="access" role="navigation" style="border-bottom-style: solid;border-bottom-color:red;
+      border-bottom-width: 3px;">
+                <ul class="desktop-nav">
+				    <li id="menu-item-56568" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56568"><a href="{% url 'list' %}">Home</a></li>
+<li id="menu-item-6172" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6172"><a href="/category/python">Python</a></li>
+<li id="menu-item-6186" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6186"><a href="/category/linux">Linux</a></li>
+<li id="menu-item-56569" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56569"><a href="/category/windows">Windows</a></li>
+<li id="menu-item-6197" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6197"><a href="/category/networking">Networking</a></li>
+<li id="menu-item-6210" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6210"><a href="{% url 'contact' %}">Contact</a></li>
+                    <li class="search-trigger"><i class="icon-search"></i></li>
+                </ul>
+                <ul class="mobile-nav">
+                	<li class="nav-trigger"><i class="icon-menu"></i> MENU</li>
+                	<li class="search-trigger"><i class="icon-search"></i></li>
+                </ul>
+			</nav><!-- #access -->
+
+		</header><!-- TO BE CHANGED -->
+        <div class="search-dropdown">
+            <form method="get" id="searchform" action="/search/">
+	<input type="text" class="field" name="query" id="s" placeholder="Search" />
+	<button type="submit" class="submit" name="submit" id="searchsubmit"><i class="icon-search"></i></button>
+</form>        </div>
+      
+<br><br>
+
+{% block content %}
+
+{% endblock %}
+            
+            
+          
+                 
+          	
+                        
+                     
+     
+            
+            
+            <script>
+            
+            searchDisplay();
+            utility();
+            mailChimp();
+      
+            </script>
+               </div>
+       </body></head></html>
