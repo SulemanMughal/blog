@@ -21,20 +21,19 @@
 
             <i>Published at: {{blogs.created_at}}</i>
             <br> <br> <br>
-            <div class="jumbotron">
+            <div style="border:solid;border-color: red ;padding-bottom: 10px;background: white">
             <table>
                 <tr>
-                    <th>Comments</th>
+                    <th style="text-align:center">Comments</th>
                    
 
                 </tr>
             </table>
-        </div>
-            <div class="jumbotron">
+        </div><br><br><br>
+            <div style="border:solid;border-color: red ;padding-bottom: 10px;background: white" >
                 <div class="container">
-
-                       
-                      
+                 <div class="row">                       
+                      <div class="col-md-7">
                         <form method="POST"  action = "{% url 'detail' blogs.slug %}">
                             {% csrf_token %}
                                 <div class="form-group">
@@ -50,8 +49,9 @@
                                         <input name="description" type="text" class="form-control" placeholder="Write your Comment">
                                       </div>
                                   
-                                <button type="submit" class="btn btn-default">Post</button>
-                              </form></div></div>
+                                <button type="submit" class="btn btn-default">Post</button><br>
+                              </form></div></div></div></div>
+
                               <div class="jumbotron">
                                     <div class="container">    
                     {% for i in comments %}
