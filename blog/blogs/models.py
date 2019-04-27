@@ -106,7 +106,7 @@ def sendMail(sender, **kwargs):
     # currentSite = get_current_site(request)
     # message="http://{d}/{s}".format(d = currentSite.get_host(), s = kwargs['instance'].slug)
     # message='http://{}'.format(Site.objects.get_current().domain)
-    message = "http://127.0.0.1:8000/detail/{}".format(kwargs['instance'].slug)
+    message = "http://165.22.80.249:8000/detail/{}".format(kwargs['instance'].slug)
     sender = settings.EMAIL_HOST_USER
     receiver= []
     sub = Subscribe.objects.all()
