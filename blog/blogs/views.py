@@ -116,7 +116,7 @@ def Contact(request):
             email=form.cleaned_data.get('Email')
             message = form.cleaned_data.get('Message')
             email_from=email
-            send_mail( subject, message, email_from, recipient_list=[settings.EMAIL_HOST_USER] )
+            send_mail( subject, message, email_from, recipient_list=[settings.EMAIL_HOST_USER,email_from] )
             return redirect('list')
     return render(request,'contact.html',{'form':form})
 
